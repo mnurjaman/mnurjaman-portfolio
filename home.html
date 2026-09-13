@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Muhammad Nurjaman — Software Developer & Entrepreneur</title>
+		<meta name="description" content="Personal Portfolio of Muhammad Nurjaman - Software Developer & Entrepreneur specializing in Back-End, iOS, IoT, and Business Operations." />
+
+		<!-- Tailwind CSS -->
+		<script src="https://cdn.tailwindcss.com"></script>
+
+		<!-- Lucide Icons -->
+		<script src="https://unpkg.com/lucide@latest"></script>
+
+		<!-- Google Fonts (Inter) -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+		<script>
+			tailwind.config = {
+				darkMode: "class",
+				theme: {
+					extend: {
+						fontFamily: {
+							sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+						},
+						colors: {
+							apple: {
+								bg: "#000000",
+								card: "#161617",
+								cardHover: "#1c1c1e",
+								accent: "#2997ff",
+								accentHover: "#0077ed",
+								textMuted: "#86868b",
+								border: "#222225",
+								borderLight: "#333336",
+							},
+						},
+					},
+				},
+			};
+		</script>
+
+		<style>
+			/* Apple-inspired Glassmorphism Backdrop */
+			.glass-nav {
+				background: rgba(0, 0, 0, 0.75);
+				backdrop-filter: blur(20px);
+				-webkit-backdrop-filter: blur(20px);
+			}
+			.glass-card {
+				background: rgba(22, 22, 23, 0.8);
+				backdrop-filter: blur(12px);
+				-webkit-backdrop-filter: blur(12px);
+			}
+			/* Custom scrollbar */
+			::-webkit-scrollbar {
+				width: 8px;
+			}
+			::-webkit-scrollbar-track {
+				background: #000000;
+			}
+			::-webkit-scrollbar-thumb {
+				background: #333336;
+				border-radius: 4px;
+			}
+			::-webkit-scrollbar-thumb:hover {
+				background: #555558;
+			}
+			/* Pulse Animation for Live Status */
+			@keyframes pulse-slow {
+				0%,
+				100% {
+					opacity: 1;
+				}
+				50% {
+					opacity: 0.4;
+				}
+			}
+			.animate-pulse-slow {
+				animation: pulse-slow 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+			}
+		</style>
+	</head>
+	<body class="bg-apple-bg text-[#f5f5f7] font-sans antialiased selection:bg-apple-accent selection:text-white min-h-screen flex flex-col justify-between">
+		<!-- Header / Sticky Navigation -->
+		<header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-apple-border transition-all duration-300">
+			<div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+				<a href="#hero" class="text-lg font-bold tracking-tight text-white hover:opacity-80 transition-opacity"> MN<span class="text-apple-accent">.</span> </a>
+
+				<!-- Desktop Navigation Links -->
+				<nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-apple-textMuted">
+					<a href="#about" class="hover:text-white transition-colors">About</a>
+					<a href="#skills" class="hover:text-white transition-colors">Competencies</a>
+					<a href="#projects" class="hover:text-white transition-colors">Projects</a>
+					<a href="#education" class="hover:text-white transition-colors">Education</a>
+				</nav>
+
+				<div class="hidden md:flex items-center space-x-4">
+					<a href="#contact" class="text-xs font-semibold bg-apple-accent hover:bg-apple-accentHover text-white px-4 py-2 rounded-full transition-all duration-200"> Get in Touch </a>
+				</div>
+
+				<!-- Mobile Hamburger Menu Button -->
+				<button id="mobile-menu-btn" class="md:hidden p-2 text-apple-textMuted hover:text-white focus:outline-none" aria-label="Toggle navigation menu">
+					<i data-lucide="menu" class="w-6 h-6"></i>
+				</button>
+			</div>
+
+			<!-- Mobile Drawer Menu -->
+			<div id="mobile-menu" class="hidden md:hidden bg-apple-card border-b border-apple-border px-6 py-4 space-y-4">
+				<a href="#about" class="mobile-nav-link block text-sm font-medium text-apple-textMuted hover:text-white py-1">About</a>
+				<a href="#skills" class="mobile-nav-link block text-sm font-medium text-apple-textMuted hover:text-white py-1">Competencies</a>
+				<a href="#projects" class="mobile-nav-link block text-sm font-medium text-apple-textMuted hover:text-white py-1">Projects</a>
+				<a href="#education" class="mobile-nav-link block text-sm font-medium text-apple-textMuted hover:text-white py-1">Education</a>
+				<a href="#contact" class="mobile-nav-link block text-center text-xs font-semibold bg-apple-accent hover:bg-apple-accentHover text-white px-4 py-2.5 rounded-full mt-2"> Get in Touch </a>
+			</div>
+		</header>
+
+		<main class="pt-16 flex-grow">
+			<!-- Hero Section -->
+			<section id="hero" class="min-h-[85vh] flex flex-col justify-center items-center text-center px-6 relative overflow-hidden">
+				<!-- Ambient Glow Background -->
+				<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(41,151,255,0.12)_0,transparent_65%)] pointer-events-none"></div>
+
+				<div class="relative z-10 max-w-4xl mx-auto space-y-6 pt-10">
+					<!-- Status Badge -->
+					<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-apple-card border border-apple-border text-apple-accent">
+						<span class="w-2 h-2 rounded-full bg-apple-accent animate-pulse-slow"></span>
+						Software Developer & Entrepreneur
+					</div>
+
+					<h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">Muhammad Nurjaman</h1>
+
+					<p class="text-lg sm:text-2xl text-apple-textMuted font-normal max-w-2xl mx-auto leading-relaxed">
+						Engineering scalable <span class="text-white font-medium">Back-End architectures</span>, native <span class="text-white font-medium">iOS apps</span>, and modern ecommerce supply chains.
+					</p>
+
+					<!-- Action Buttons -->
+					<div class="pt-4 flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto px-4 sm:px-0">
+						<a href="#projects" class="w-full sm:w-auto px-7 py-3 rounded-full bg-white text-black font-semibold text-sm hover:bg-gray-200 transition-all text-center"> Explore Work </a>
+						<a href="#contact" class="w-full sm:w-auto px-7 py-3 rounded-full bg-apple-card border border-apple-border text-white font-semibold text-sm hover:bg-apple-cardHover hover:border-apple-borderLight transition-all text-center">
+							Contact & Collaborate
+						</a>
+					</div>
+				</div>
+
+				<!-- Scroll Indicator -->
+				<a href="#about" class="mt-16 text-apple-textMuted hover:text-white transition-colors" aria-label="Scroll down">
+					<i data-lucide="chevron-down" class="w-6 h-6 animate-bounce"></i>
+				</a>
+			</section>
+
+			<!-- Executive Profile / About -->
+			<section id="about" class="py-20 px-6 max-w-6xl mx-auto border-t border-apple-border/40">
+				<div class="space-y-3 mb-10">
+					<span class="text-xs font-semibold text-apple-accent uppercase tracking-widest">About</span>
+					<h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Executive Profile</h2>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+					<!-- Main Bio Card -->
+					<div class="md:col-span-2 bg-apple-card border border-apple-border p-8 rounded-3xl space-y-5 hover:border-apple-borderLight transition-all">
+						<div class="w-12 h-12 bg-apple-accent/10 rounded-2xl flex items-center justify-center text-apple-accent">
+							<i data-lucide="user-check" class="w-6 h-6"></i>
+						</div>
+						<h3 class="text-2xl font-bold text-white">Engineering Systems with Practical Business Rigor</h3>
+						<p class="text-apple-textMuted leading-relaxed text-sm sm:text-base">
+							Dedicated software engineer specializing in scalable Back-End microservices, REST API design, and iOS mobile applications. Combining academic research at the Master's level (M.Kom candidate via RPL pathway at Universitas
+							Teknologi Yogyakarta) with real-world entrepreneurial experience directing product sourcing and operations for <em class="text-white not-italic font-medium">Lynore</em>.
+						</p>
+						<div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-apple-border/60 text-xs">
+							<div>
+								<span class="text-apple-textMuted block">Location</span>
+								<span class="text-white font-medium">Jakarta & Yogyakarta</span>
+							</div>
+							<div>
+								<span class="text-apple-textMuted block">Education</span>
+								<span class="text-white font-medium">Master of Informatics</span>
+							</div>
+							<div>
+								<span class="text-apple-textMuted block">Focus Area</span>
+								<span class="text-white font-medium">Back-End & iOS</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Quick Highlights Card -->
+					<div class="bg-apple-card border border-apple-border p-8 rounded-3xl flex flex-col justify-between hover:border-apple-borderLight transition-all">
+						<div class="space-y-6">
+							<div>
+								<span class="text-xs text-apple-textMuted uppercase font-semibold tracking-wider">Academic Pathway</span>
+								<p class="text-white font-semibold text-base mt-1">M.Kom Candidate (S2)</p>
+								<p class="text-xs text-apple-textMuted">Universitas Teknologi Yogyakarta</p>
+							</div>
+							<hr class="border-apple-border" />
+							<div>
+								<span class="text-xs text-apple-textMuted uppercase font-semibold tracking-wider">Primary Stack</span>
+								<p class="text-white font-semibold text-base mt-1">Node.js, Swift, AWS</p>
+								<p class="text-xs text-apple-textMuted">REST APIs, Systems & IoT Integration</p>
+							</div>
+							<hr class="border-apple-border" />
+							<div>
+								<span class="text-xs text-apple-textMuted uppercase font-semibold tracking-wider">Venture</span>
+								<p class="text-white font-semibold text-base mt-1">Lynore Brand Operations</p>
+								<p class="text-xs text-apple-textMuted">Curated Products & Supply Logistics</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Technical & Core Competencies -->
+			<section id="skills" class="py-20 px-6 max-w-6xl mx-auto border-t border-apple-border/40">
+				<div class="space-y-3 mb-10">
+					<span class="text-xs font-semibold text-apple-accent uppercase tracking-widest">Capabilities</span>
+					<h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Technical Competencies</h2>
+				</div>
+
+				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+					<!-- Skill 1 -->
+					<div class="bg-apple-card border border-apple-border p-6 rounded-3xl hover:bg-apple-cardHover transition-all space-y-4">
+						<div class="w-10 h-10 bg-blue-500/10 rounded-xl flex items-center justify-center text-apple-accent">
+							<i data-lucide="server" class="w-5 h-5"></i>
+						</div>
+						<h3 class="text-lg font-bold text-white">Back-End Engineering</h3>
+						<p class="text-xs text-apple-textMuted leading-relaxed">Node.js, Express, JavaScript/TypeScript, RESTful APIs, AWS Cloud infrastructure, and database optimization.</p>
+						<div class="flex flex-wrap gap-1.5 pt-2">
+							<span class="px-2.5 py-1 bg-apple-border/60 text-[11px] font-medium text-gray-300 rounded-full">Node.js</span>
+							<span class="px-2.5 py-1 bg-apple-border/60 text-[11px] font-medium text-gray-300 rounded-full">REST APIs</span>
+							<span class="px-2.5 py-1 bg-apple-border/60 text-[11px] font-medium text-gray-300 rounded-full">AWS</span>
+						</div>
+					</div>
+
+					<!-- Skill 2 -->
+					<div class="bg-apple-card border border-apple-border p-6 rounded-3xl hover:bg-apple-cardHover transition-all space-y-4">
+						<div class="w-10 h-10 bg-purple-500/10 rounded-xl flex items-center justify-center text-purple-400">
+							<i data-lucide="smartphone" class="w-5 h-5"></i>
+						</div>
+						<h3 class="text-lg font-bold text-white">Mobile Architecture</h3>
+						<p class="text-xs text-apple-textMuted leading-relaxed">Native iOS development with Swift, UIKit/SwiftUI principles, modular architecture, and mobile API integration.</p>
+						<div class="flex flex-wrap gap-1.5 pt-2">
+							<span class="px-2.5 py-1 bg-apple-border/60 text-[11px] font-medium text-purple-300 rounded-full">iOS</span>
+							<span class="px-2.5 py-1 bg-apple-border/60 text-[11px] font-medium text-purple-300 rounded-full">Swift</span>
+							<span class="px-2.5 py-1 bg-apple-border/60 text-[11px] font-medium text-purple-300 rounded-full">Mobile UX</span>
+						</div>
+					</div>
+
+					<!-- Skill 3 -->
+					<div class="bg-apple-card border border-apple-border p-6 rounded-3xl hover:bg-apple-cardHover transition-all space-y-4">
+						<div class="w-10 h-10 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-400">
+							<i data-lucide="cpu" class="w-5 h-5"></i>
+						</div>
+						<h3 class="text-lg font-bold text-white">IoT & Hardware</h3>
+						<p class="text-xs text-apple-textMuted leading-relaxed">Arduino microcontrollers, real-time sensor integration, serial communication, and mobile-hardware bridging.</p>
+						<div class="flex flex-wrap gap-1.5 pt-2">
+							<span class="px-2.5 py-1 bg-apple-border/60 text-[11px] font-medium text-emerald-300 rounded-full">Arduino</span>
+							<span class="px-2.5 py-1 bg-apple-border/60 text-[11px] font-medium text-emerald-300 rounded-full">Sensors</span>
+							<span class="px-2.5 py-1 bg-apple-border/60 text-[11px] font-medium text-emerald-300 rounded-full">MIT App</span>
+						</div>
+					</div>
+
+					<!-- Skill 4 -->
+					<div class="bg-apple-card border border-apple-border p-6 rounded-3xl hover:bg-apple-cardHover transition-all space-y-4">
+						<div class="w-10 h-10 bg-amber-500/10 rounded-xl flex items-center justify-center text-amber-400">
+							<i data-lucide="shopping-bag" class="w-5 h-5"></i>
+						</div>
+						<h3 class="text-lg font-bold text-white">E-Commerce & BizOps</h3>
+						<p class="text-xs text-apple-textMuted leading-relaxed">Brand creation (Lynore), wholesale procurement, custom packaging logistics, and inventory optimization.</p>
+						<div class="flex flex-wrap gap-1.5 pt-2">
+							<span class="px-2.5 py-1 bg-apple-border/60 text-[11px] font-medium text-amber-300 rounded-full">Supply Chain</span>
+							<span class="px-2.5 py-1 bg-apple-border/60 text-[11px] font-medium text-amber-300 rounded-full">Brand Ops</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Featured Projects with Filter Tabs -->
+			<section id="projects" class="py-20 px-6 max-w-6xl mx-auto border-t border-apple-border/40">
+				<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+					<div class="space-y-3">
+						<span class="text-xs font-semibold text-apple-accent uppercase tracking-widest">Portfolio</span>
+						<h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Featured Work</h2>
+					</div>
+
+					<!-- Interactive Filter Buttons -->
+					<div class="flex flex-wrap gap-2" id="project-filters">
+						<button data-filter="all" class="filter-btn active px-4 py-2 rounded-full text-xs font-semibold bg-white text-black transition-all">All</button>
+						<button data-filter="iot" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-apple-card border border-apple-border text-apple-textMuted hover:text-white transition-all">IoT & Mobile</button>
+						<button data-filter="backend" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-apple-card border border-apple-border text-apple-textMuted hover:text-white transition-all">Back-End</button>
+						<button data-filter="biz" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-apple-card border border-apple-border text-apple-textMuted hover:text-white transition-all">Business</button>
+					</div>
+				</div>
+
+				<!-- Project Cards Grid -->
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="projects-grid">
+					<!-- Project Item 1 -->
+					<div
+						class="project-card bg-apple-card border border-apple-border rounded-3xl overflow-hidden hover:border-apple-accent/60 transition-all flex flex-col justify-between group cursor-pointer"
+						data-category="iot"
+						onclick="openProjectModal('iot-earthquake')">
+						<div class="p-8 space-y-4">
+							<div class="flex items-center justify-between">
+								<span class="text-xs font-semibold px-3 py-1 bg-apple-accent/10 text-apple-accent rounded-full border border-apple-accent/20">IoT & Mobile Integration</span>
+								<i data-lucide="activity" class="w-5 h-5 text-apple-textMuted group-hover:text-apple-accent transition-colors"></i>
+							</div>
+							<h3 class="text-2xl font-bold text-white group-hover:text-apple-accent transition-colors">IoT Earthquake Early Warning System</h3>
+							<p class="text-apple-textMuted text-sm leading-relaxed">
+								An integrated seismic detection early-warning solution combining Arduino hardware sensors with a mobile interface built on MIT App Inventor for rapid alert distribution.
+							</p>
+						</div>
+						<div class="p-8 pt-0 flex items-center justify-between text-xs font-medium text-apple-accent">
+							<span class="flex items-center group-hover:translate-x-1 transition-transform"> View Architecture Details <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i> </span>
+							<span class="text-apple-textMuted text-[11px]">Hardware / C++ / Mobile</span>
+						</div>
+					</div>
+
+					<!-- Project Item 2 -->
+					<div
+						class="project-card bg-apple-card border border-apple-border rounded-3xl overflow-hidden hover:border-purple-500/60 transition-all flex flex-col justify-between group cursor-pointer"
+						data-category="biz"
+						onclick="openProjectModal('lynore-ops')">
+						<div class="p-8 space-y-4">
+							<div class="flex items-center justify-between">
+								<span class="text-xs font-semibold px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full border border-purple-500/20">E-Commerce & Logistics</span>
+								<i data-lucide="package" class="w-5 h-5 text-apple-textMuted group-hover:text-purple-400 transition-colors"></i>
+							</div>
+							<h3 class="text-2xl font-bold text-white group-hover:text-purple-400 transition-colors">Lynore Brand & Supply Infrastructure</h3>
+							<p class="text-apple-textMuted text-sm leading-relaxed">End-to-end brand identity establishment, wholesale procurement pipelines, and precision custom packaging operations for high-demand hair accessories.</p>
+						</div>
+						<div class="p-8 pt-0 flex items-center justify-between text-xs font-medium text-purple-400">
+							<span class="flex items-center group-hover:translate-x-1 transition-transform"> View Operational Case <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i> </span>
+							<span class="text-apple-textMuted text-[11px]">Operations / Retail</span>
+						</div>
+					</div>
+
+					<!-- Project Item 3 -->
+					<div
+						class="project-card bg-apple-card border border-apple-border rounded-3xl overflow-hidden hover:border-emerald-500/60 transition-all flex flex-col justify-between group cursor-pointer"
+						data-category="backend"
+						onclick="openProjectModal('backend-api')">
+						<div class="p-8 space-y-4">
+							<div class="flex items-center justify-between">
+								<span class="text-xs font-semibold px-3 py-1 bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">Back-End Architecture</span>
+								<i data-lucide="database" class="w-5 h-5 text-apple-textMuted group-hover:text-emerald-400 transition-colors"></i>
+							</div>
+							<h3 class="text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors">Scalable Microservices REST API</h3>
+							<p class="text-apple-textMuted text-sm leading-relaxed">High-concurrency Node.js RESTful API suite deployed on AWS infrastructure, implementing secure authentication, database indexing, and rate limiting.</p>
+						</div>
+						<div class="p-8 pt-0 flex items-center justify-between text-xs font-medium text-emerald-400">
+							<span class="flex items-center group-hover:translate-x-1 transition-transform"> View Tech Stack <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i> </span>
+							<span class="text-apple-textMuted text-[11px]">Node.js / Express / AWS</span>
+						</div>
+					</div>
+
+					<!-- Project Item 4 -->
+					<div
+						class="project-card bg-apple-card border border-apple-border rounded-3xl overflow-hidden hover:border-amber-500/60 transition-all flex flex-col justify-between group cursor-pointer"
+						data-category="iot"
+						onclick="openProjectModal('ios-fleet')">
+						<div class="p-8 space-y-4">
+							<div class="flex items-center justify-between">
+								<span class="text-xs font-semibold px-3 py-1 bg-amber-500/10 text-amber-400 rounded-full border border-amber-500/20">Mobile & iOS</span>
+								<i data-lucide="shield-check" class="w-5 h-5 text-apple-textMuted group-hover:text-amber-400 transition-colors"></i>
+							</div>
+							<h3 class="text-2xl font-bold text-white group-hover:text-amber-400 transition-colors">iOS Fleet Management Companion</h3>
+							<p class="text-apple-textMuted text-sm leading-relaxed">Swift-based mobile application prototype designed for real-time tracking, route optimization, and operational status monitoring.</p>
+						</div>
+						<div class="p-8 pt-0 flex items-center justify-between text-xs font-medium text-amber-400">
+							<span class="flex items-center group-hover:translate-x-1 transition-transform"> View App Specs <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i> </span>
+							<span class="text-apple-textMuted text-[11px]">Swift / iOS / CoreLocation</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Education & Credentials -->
+			<section id="education" class="py-20 px-6 max-w-6xl mx-auto border-t border-apple-border/40">
+				<div class="space-y-3 mb-10">
+					<span class="text-xs font-semibold text-apple-accent uppercase tracking-widest">Credentials</span>
+					<h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Academic & Certifications</h2>
+				</div>
+
+				<div class="space-y-4">
+					<!-- Edu 1 -->
+					<div class="bg-apple-card border border-apple-border p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-apple-borderLight transition-all">
+						<div class="flex items-start space-x-4">
+							<div class="p-3 bg-apple-border/60 rounded-xl text-apple-accent">
+								<i data-lucide="graduation-cap" class="w-6 h-6"></i>
+							</div>
+							<div>
+								<h3 class="text-lg font-bold text-white">Master of Informatics (M.Kom) — RPL Pathway</h3>
+								<p class="text-sm text-apple-textMuted">Universitas Teknologi Yogyakarta (UTY)</p>
+							</div>
+						</div>
+						<span class="text-xs font-semibold px-3 py-1 bg-blue-500/10 text-apple-accent border border-apple-accent/20 rounded-full self-start sm:self-auto"> In Progress </span>
+					</div>
+
+					<!-- Cert 1 -->
+					<div class="bg-apple-card border border-apple-border p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-apple-borderLight transition-all">
+						<div class="flex items-start space-x-4">
+							<div class="p-3 bg-apple-border/60 rounded-xl text-emerald-400">
+								<i data-lucide="award" class="w-6 h-6"></i>
+							</div>
+							<div>
+								<h3 class="text-lg font-bold text-white">AWS Back-End Academy Certification</h3>
+								<p class="text-sm text-apple-textMuted">Cloud Infrastructure Architecture & Microservices</p>
+							</div>
+						</div>
+						<span class="text-xs font-semibold px-3 py-1 bg-apple-border/40 text-apple-textMuted rounded-full self-start sm:self-auto"> Certified </span>
+					</div>
+
+					<!-- Cert 2 -->
+					<div class="bg-apple-card border border-apple-border p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-apple-borderLight transition-all">
+						<div class="flex items-start space-x-4">
+							<div class="p-3 bg-apple-border/60 rounded-xl text-purple-400">
+								<i data-lucide="code-2" class="w-6 h-6"></i>
+							</div>
+							<div>
+								<h3 class="text-lg font-bold text-white">Dicoding JavaScript & Back-End Specialty Track</h3>
+								<p class="text-sm text-apple-textMuted">Advanced JavaScript Architecture & Node.js Application Development</p>
+							</div>
+						</div>
+						<span class="text-xs font-semibold px-3 py-1 bg-apple-border/40 text-apple-textMuted rounded-full self-start sm:self-auto"> Certified </span>
+					</div>
+				</div>
+			</section>
+
+			<!-- Contact Section -->
+			<section id="contact" class="py-20 px-6 max-w-6xl mx-auto border-t border-apple-border/40">
+				<div class="bg-gradient-to-b from-apple-card to-black border border-apple-border rounded-3xl p-8 sm:p-14 text-center space-y-6">
+					<span class="text-xs font-semibold text-apple-accent uppercase tracking-widest">Initiate Collaboration</span>
+					<h2 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">Let's Work Together.</h2>
+					<p class="text-apple-textMuted text-sm sm:text-base max-w-xl mx-auto leading-relaxed">Open for software engineering opportunities, back-end system architecture consultations, and business collaborations.</p>
+
+					<div class="pt-4 flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
+						<button onclick="copyEmailToClipboard()" class="flex items-center justify-center space-x-2 bg-white text-black font-semibold text-sm px-6 py-3.5 rounded-full hover:bg-gray-200 transition-all">
+							<i data-lucide="mail" class="w-4 h-4"></i>
+							<span id="copy-btn-text">Copy Email Address</span>
+						</button>
+						<a
+							href="https://github.com"
+							target="_blank"
+							rel="noopener"
+							class="flex items-center justify-center space-x-2 bg-apple-card border border-apple-border text-white font-semibold text-sm px-6 py-3.5 rounded-full hover:bg-apple-cardHover transition-all">
+							<i data-lucide="github" class="w-4 h-4"></i>
+							<span>GitHub Profile</span>
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer class="border-t border-apple-border py-8 text-center text-xs text-apple-textMuted">
+			<div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+				<p>© 2026 Muhammad Nurjaman. All rights reserved.</p>
+				<p class="text-apple-textMuted">Engineered with Apple Premium Minimalism.</p>
+			</div>
+		</footer>
+
+		<!-- Project Details Modal (Replaces alert) -->
+		<div id="project-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 glass-nav bg-black/80">
+			<div class="bg-apple-card border border-apple-border max-w-2xl w-full rounded-3xl p-6 sm:p-8 space-y-6 relative max-h-[90vh] overflow-y-auto">
+				<button onclick="closeProjectModal()" class="absolute top-6 right-6 text-apple-textMuted hover:text-white p-1">
+					<i data-lucide="x" class="w-6 h-6"></i>
+				</button>
+				<div id="modal-content">
+					<!-- Dynamically filled by JavaScript -->
+				</div>
+			</div>
+		</div>
+
+		<!-- Toast Notification Container -->
+		<div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-apple-accent text-white px-5 py-3 rounded-2xl shadow-2xl text-xs font-semibold flex items-center space-x-2 transition-all duration-300">
+			<i data-lucide="check-circle-2" class="w-4 h-4"></i>
+			<span id="toast-message">Copied to clipboard!</span>
+		</div>
+
+		<script>
+			// Initialize Lucide Icons
+			lucide.createIcons();
+
+			// 1. Mobile Menu Toggle Logic
+			const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+			const mobileMenu = document.getElementById("mobile-menu");
+			const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+			mobileMenuBtn.addEventListener("click", () => {
+				mobileMenu.classList.toggle("hidden");
+			});
+
+			mobileNavLinks.forEach((link) => {
+				link.addEventListener("click", () => {
+					mobileMenu.classList.add("hidden");
+				});
+			});
+
+			// 2. Interactive Project Filtering
+			const filterBtns = document.querySelectorAll(".filter-btn");
+			const projectCards = document.querySelectorAll(".project-card");
+
+			filterBtns.forEach((btn) => {
+				btn.addEventListener("click", () => {
+					// Remove active styling from all buttons
+					filterBtns.forEach((b) => {
+						b.classList.remove("active", "bg-white", "text-black");
+						b.classList.add("bg-apple-card", "border", "border-apple-border", "text-apple-textMuted");
+					});
+
+					// Set active styling to clicked button
+					btn.classList.add("active", "bg-white", "text-black");
+					btn.classList.remove("bg-apple-card", "border", "border-apple-border", "text-apple-textMuted");
+
+					const filter = btn.getAttribute("data-filter");
+
+					projectCards.forEach((card) => {
+						const category = card.getAttribute("data-category");
+						if (filter === "all" || filter === category) {
+							card.style.display = "flex";
+						} else {
+							card.style.display = "none";
+						}
+					});
+				});
+			});
+
+			// 3. Project Detail Modal Data & Functions
+			const projectDetailsData = {
+				"iot-earthquake": {
+					title: "IoT Earthquake Early Warning System",
+					category: "IoT & Mobile Hardware Integration",
+					description:
+						"A hardware-software early warning solution designed to detect seismic micro-vibrations in real time. Built using an Arduino microcontroller interfaced with piezo sensor modules. Sensor readings are transmitted to an MIT App Inventor mobile application via Bluetooth/Wi-Fi to trigger instant audible alerts and notify local users.",
+					techStack: ["Arduino C++", "Piezo Vibration Sensor", "MIT App Inventor", "Bluetooth Serial Protocol"],
+				},
+				"lynore-ops": {
+					title: "Lynore Brand & Supply Infrastructure",
+					category: "Ecommerce & Business Operations",
+					description:
+						"End-to-end operational strategy and logistics setup for hair accessory e-commerce brand Lynore. Encompasses direct manufacturer sourcing in wholesale markets, quality control workflows, custom branded packaging engineering, and sales fulfillment channel management.",
+					techStack: ["Supply Chain Logistics", "Brand Identity", "Product Sourcing", "E-Commerce Retail"],
+				},
+				"backend-api": {
+					title: "Scalable Microservices REST API",
+					category: "Back-End Architecture",
+					description: "High-performance microservice framework built on Node.js and Express. Features JWT-based authentication, rate limiting middleware, structured logging, and AWS cloud deployment configuration.",
+					techStack: ["Node.js", "Express", "AWS EC2 / S3", "PostgreSQL / MongoDB", "JWT"],
+				},
+				"ios-fleet": {
+					title: "iOS Fleet Management Companion",
+					category: "Mobile Application Development",
+					description: "Native iOS application built with Swift for tracking real-time asset locations, monitoring task status, and providing streamlined communication channels between dispatchers and field personnel.",
+					techStack: ["Swift", "UIKit", "CoreLocation", "REST API Integration"],
+				},
+			};
+
+			function openProjectModal(key) {
+				const data = projectDetailsData[key];
+				if (!data) return;
+
+				const modalContent = document.getElementById("modal-content");
+				modalContent.innerHTML = `
+                <span class="text-xs font-semibold px-3 py-1 bg-apple-accent/10 text-apple-accent rounded-full border border-apple-accent/20">
+                    ${data.category}
+                </span>
+                <h3 class="text-2xl sm:text-3xl font-bold text-white mt-3 mb-4">${data.title}</h3>
+                <p class="text-apple-textMuted text-sm leading-relaxed mb-6">${data.description}</p>
+                <div class="border-t border-apple-border pt-4">
+                    <h4 class="text-xs font-semibold text-white uppercase tracking-wider mb-3">Technologies Used</h4>
+                    <div class="flex flex-wrap gap-2">
+                        ${data.techStack.map((tech) => `<span class="px-3 py-1 bg-apple-borderLight text-xs font-medium text-white rounded-full">${tech}</span>`).join("")}
+                    </div>
+                </div>
+            `;
+
+				document.getElementById("project-modal").classList.remove("hidden");
+			}
+
+			function closeProjectModal() {
+				document.getElementById("project-modal").classList.add("hidden");
+			}
+
+			// Close modal when clicking outside of modal box
+			document.getElementById("project-modal").addEventListener("click", (e) => {
+				if (e.target.id === "project-modal") {
+					closeProjectModal();
+				}
+			});
+
+			// 4. Clipboard Functionality with Toast Notification
+			function copyEmailToClipboard() {
+				const email = "contact@nurjaman.dev";
+
+				// Temporary input creation for fallback support
+				const tempInput = document.createElement("input");
+				tempInput.value = email;
+				document.body.appendChild(tempInput);
+				tempInput.select();
+				document.execCommand("copy");
+				document.body.removeChild(tempInput);
+
+				// Update button label feedback
+				const btnText = document.getElementById("copy-btn-text");
+				const originalText = btnText.innerText;
+				btnText.innerText = "Copied!";
+
+				// Show Toast
+				const toast = document.getElementById("toast");
+				toast.classList.remove("hidden");
+
+				setTimeout(() => {
+					btnText.innerText = originalText;
+					toast.classList.add("hidden");
+				}, 2500);
+			}
+		</script>
+	</body>
+</html>
