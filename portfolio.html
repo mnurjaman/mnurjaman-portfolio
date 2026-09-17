@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>All Projects | Muhammad Nurjaman</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://unpkg.com/lucide@latest"></script>
+		<script>
+			tailwind.config = { darkMode: "class", theme: { extend: { colors: { apple: { bg: "#000000", card: "#161617", cardHover: "#1c1c1e", accent: "#2997ff", textMuted: "#86868b", border: "#222225" } } } } };
+		</script>
+		<style>
+			body {
+				background: #000;
+				color: #f5f5f7;
+				font-family:
+					Inter,
+					-apple-system,
+					BlinkMacSystemFont,
+					"Segoe UI",
+					sans-serif;
+			}
+			.glass-nav {
+				background: rgba(0, 0, 0, 0.78);
+				backdrop-filter: blur(20px);
+				-webkit-backdrop-filter: blur(20px);
+			}
+			html,
+			body {
+				width: 100%;
+				max-width: 100%;
+				overflow-x: hidden;
+			}
+			img,
+			svg {
+				max-width: 100%;
+			}
+		</style>
+	</head>
+	<body class="min-h-screen antialiased">
+		<header class="sticky top-0 z-20 glass-nav border-b border-apple-border">
+			<div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+				<a href="home.html" class="text-lg font-bold tracking-tight text-white">MN<span class="text-apple-accent">.</span></a>
+				<a href="home.html#projects" class="inline-flex items-center gap-1.5 text-xs sm:text-sm text-apple-textMuted hover:text-white transition-colors"><i data-lucide="arrow-left" class="w-4 h-4 shrink-0"></i> Back home</a>
+			</div>
+		</header>
+		<main class="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
+			<div class="max-w-2xl mb-10 sm:mb-12">
+				<span class="text-xs font-semibold text-apple-accent uppercase tracking-widest">Portfolio archive</span>
+				<h1 class="text-3xl sm:text-6xl font-extrabold tracking-tight text-white mt-3 break-words">All projects</h1>
+				<p class="text-apple-textMuted text-lg leading-relaxed mt-5">A complete view of the systems, products, and operational work built across software, IoT, and commerce.</p>
+			</div>
+			<div class="flex flex-wrap gap-2 mb-8 sm:mb-10 max-w-full" id="portfolio-filters" aria-label="Filter projects">
+				<button type="button" data-filter="all" class="portfolio-filter active px-3 sm:px-4 py-2 rounded-full text-xs font-semibold bg-white text-black transition-all">All projects</button>
+				<button type="button" data-filter="iot" class="portfolio-filter px-3 sm:px-4 py-2 rounded-full text-xs font-semibold bg-apple-card border border-apple-border text-apple-textMuted hover:text-white transition-all">
+					IoT & Mobile
+				</button>
+				<button type="button" data-filter="backend" class="portfolio-filter px-3 sm:px-4 py-2 rounded-full text-xs font-semibold bg-apple-card border border-apple-border text-apple-textMuted hover:text-white transition-all">
+					Back-End
+				</button>
+				<button type="button" data-filter="biz" class="portfolio-filter px-3 sm:px-4 py-2 rounded-full text-xs font-semibold bg-apple-card border border-apple-border text-apple-textMuted hover:text-white transition-all">Business</button>
+			</div>
+			<div id="all-projects" class="grid grid-cols-1 md:grid-cols-2 gap-6" aria-live="polite"></div>
+		</main>
+		<script>
+			const accentClasses = { blue: "apple-accent", purple: "purple-400", emerald: "emerald-400", amber: "amber-400" };
+			const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
+			const filters = document.querySelectorAll(".portfolio-filter");
+			let projects = [];
+
+			function renderProjects(filter = "all") {
+				const visibleProjects = filter === "all" ? projects : projects.filter((project) => project.category === filter);
+				document.getElementById("all-projects").innerHTML =
+					visibleProjects.length ?
+						visibleProjects
+							.map((project) => {
+								const accent = accentClasses[project.accent] || accentClasses.blue;
+								return `<article class="bg-apple-card border border-apple-border rounded-3xl overflow-hidden hover:border-${accent}/60 transition-all min-w-0">
+									<img src="${escapeHtml(project.image_url)}" alt="${escapeHtml(project.title)} project cover" class="w-full aspect-[16/8] object-cover" loading="lazy" />
+									<div class="p-5 sm:p-8">
+									<div class="flex items-center justify-between gap-4 mb-6"><span class="text-xs font-semibold px-3 py-1 bg-${accent}/10 text-${accent} rounded-full border border-${accent}/20">${escapeHtml(project.category_label)}</span><i data-lucide="${escapeHtml(project.icon)}" class="w-5 h-5 text-${accent}"></i></div>
+									<h2 class="text-2xl font-bold text-white">${escapeHtml(project.title)}</h2>
+									<p class="text-apple-textMuted text-sm leading-relaxed mt-4">${escapeHtml(project.detail)}</p>
+									<div class="flex flex-wrap gap-2 mt-6 pt-5 border-t border-apple-border">${project.technologies.map((technology) => `<span class="px-3 py-1 bg-apple-border text-xs text-gray-300 rounded-full">${escapeHtml(technology)}</span>`).join("")}</div>
+									</div>
+								</article>`;
+							})
+							.join("")
+					:	'<p class="text-apple-textMuted text-sm">No projects found in this category.</p>';
+				lucide.createIcons();
+			}
+
+			filters.forEach((button) => {
+				button.addEventListener("click", () => {
+					filters.forEach((filterButton) => {
+						filterButton.classList.remove("active", "bg-white", "text-black");
+						filterButton.classList.add("bg-apple-card", "border", "border-apple-border", "text-apple-textMuted");
+					});
+					button.classList.add("active", "bg-white", "text-black");
+					button.classList.remove("bg-apple-card", "border", "border-apple-border", "text-apple-textMuted");
+					renderProjects(button.dataset.filter);
+				});
+			});
+
+			fetch("/api/projects")
+				.then((response) => response.json())
+				.then((apiProjects) => {
+					projects = apiProjects;
+					renderProjects();
+				})
+				.catch(() => {
+					document.getElementById("all-projects").innerHTML = '<p class="text-apple-textMuted">Projects are temporarily unavailable.</p>';
+				});
+			lucide.createIcons();
+		</script>
+	</body>
+</html>
